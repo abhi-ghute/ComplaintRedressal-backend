@@ -8,4 +8,5 @@ import com.complaint.entity.CustomerEntity;
 @Repository
 public interface CustomerRespository extends JpaRepository<CustomerEntity, Integer>{
 
+	public CustomerEntity findByemailAndPassword(String email,String password);
 }
