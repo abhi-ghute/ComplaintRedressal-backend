@@ -1,33 +1,25 @@
 package com.complaint.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.complaint.dto.Complaint;
-import com.complaint.dto.Customer;
-import com.complaint.service.CustomerService;
+import com.complaint.dto.Manager;
+import com.complaint.service.ManagerService;
 
 @RestController
+@RequestMapping("manager")
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("customer")
-public class CustomerController {
+public class ManagerController {
 
 	@Autowired
-	CustomerService service;
+	ManagerService service;
 	
 	@PostMapping("create")
-	public String createCustomer(@RequestBody Customer customer) {
-		
-		System.out.println(customer.getPincode());
-		return service.createCustomer(customer);
+	public String createManager(@RequestBody Manager manager) {
+		return service.createManager(manager);
 	}
-
 }

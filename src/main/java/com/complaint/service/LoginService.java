@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 import com.complaint.dto.Login;
 import com.complaint.entity.AdministratorEntity;
 import com.complaint.entity.CustomerEntity;
+import com.complaint.entity.ManagerEntity;
 import com.complaint.repository.AdministratorRepo;
 import com.complaint.repository.CustomerRespository;
+import com.complaint.repository.ManagerRepository;
 
 @Service
 public class LoginService {
@@ -18,8 +20,10 @@ public class LoginService {
 	@Autowired
 	CustomerRespository customerRepo;
 	
+	@Autowired
+	ManagerRepository managerRepo;
+	
 	public String login(Login login) {
-		
 		if(login.getRole().equalsIgnoreCase("admin")) {
 			AdministratorEntity administratorEntity = adminRepo.findByUserNameAndPassword(login.getUserName(),login.getPassword());
 			if(administratorEntity != null) {
@@ -31,6 +35,13 @@ public class LoginService {
 				return customerEntity.getId()+"";
 			}
 		}
+		else if(login.getRole().equalsIgnoreCase("manager")){
+			ManagerEntity managerEntity = managerRepo.findByemailAndPassword(login.getUserName(), login.getPassword());
+			if(managerEntity != null) {
+				return managerEntity.getId()+"";
+			}
+		}
+		
 		return "failure";
 	}
 }

@@ -12,22 +12,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.complaint.dto.Complaint;
-import com.complaint.dto.Customer;
-import com.complaint.service.CustomerService;
+import com.complaint.service.ComplaintService;
 
 @RestController
+@RequestMapping("complaint")
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("customer")
-public class CustomerController {
+public class ComplaintController {
 
 	@Autowired
-	CustomerService service;
+	ComplaintService service;
 	
-	@PostMapping("create")
-	public String createCustomer(@RequestBody Customer customer) {
-		
-		System.out.println(customer.getPincode());
-		return service.createCustomer(customer);
+	@PostMapping("save")
+	public String saveComplaint(@RequestBody Complaint complaint) {
+		System.out.println(complaint.getMobile());
+		return service.saveComplaint(complaint);
 	}
-
+	
+	@GetMapping("list")
+	public List<Complaint> getComplaints(@RequestParam String cid) {
+		return service.getcomplaints(cid);
+	}
 }
