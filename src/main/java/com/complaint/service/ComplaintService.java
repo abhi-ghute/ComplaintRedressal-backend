@@ -1,6 +1,6 @@
 package com.complaint.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -25,17 +25,22 @@ public class ComplaintService {
 		return "success";
 	}
 	
-	public List<Complaint> getcomplaints(String cid) {
-		List<Complaint> complaintList = new ArrayList<>();
-		
+	public List<ComplaintEntity> getcomplaints(String cid) {
+
 		List<ComplaintEntity> entityList = complaintRepo.findByCid(cid);
 		
-		for(ComplaintEntity entity:entityList) {
-			Complaint complaint = new Complaint();
-			BeanUtils.copyProperties(entity, complaint);
-			complaintList.add(complaint);
-		}
-		
-		return complaintList;
+		return entityList;
 	}
+	
+	public ComplaintEntity getComplaintById(Integer id) {
+		return complaintRepo.findById(id).get();
+	}
+	
+	public List<ComplaintEntity> getAllComplaints() {
+
+		List<ComplaintEntity> entityList = complaintRepo.findAll();
+		
+		return entityList;
+	}
+	
 }

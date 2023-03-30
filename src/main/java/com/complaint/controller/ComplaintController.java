@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.complaint.dto.Complaint;
+import com.complaint.entity.ComplaintEntity;
 import com.complaint.service.ComplaintService;
 
 @RestController
@@ -29,7 +30,17 @@ public class ComplaintController {
 	}
 	
 	@GetMapping("list")
-	public List<Complaint> getComplaints(@RequestParam String cid) {
+	public List<ComplaintEntity> getComplaints(@RequestParam String cid) {
 		return service.getcomplaints(cid);
+	}
+	
+	@GetMapping("getComplaintById")
+	public ComplaintEntity getComplaintById(@RequestParam String id) {
+		return service.getComplaintById(Integer.parseInt(id));
+	}
+	
+	@GetMapping("getAllComplaints")
+	public List<ComplaintEntity> getAllComplaints(){
+		return service.getAllComplaints();
 	}
 }
