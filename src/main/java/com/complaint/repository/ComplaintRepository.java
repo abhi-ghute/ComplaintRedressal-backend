@@ -11,4 +11,8 @@ import com.complaint.entity.ComplaintEntity;
 public interface ComplaintRepository extends JpaRepository<ComplaintEntity, Integer>{
 
 	public List<ComplaintEntity> findByCid(String cid);
+	
+	public List<ComplaintEntity> findByStatus(String status);
+	
+	public List<ComplaintEntity> findByStatusAndEid(String status,String eid);
 }

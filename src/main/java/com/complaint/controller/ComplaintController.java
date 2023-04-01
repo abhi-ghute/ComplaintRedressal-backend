@@ -25,7 +25,6 @@ public class ComplaintController {
 	
 	@PostMapping("save")
 	public String saveComplaint(@RequestBody Complaint complaint) {
-		System.out.println(complaint.getMobile());
 		return service.saveComplaint(complaint);
 	}
 	
@@ -40,7 +39,17 @@ public class ComplaintController {
 	}
 	
 	@GetMapping("getAllComplaints")
-	public List<ComplaintEntity> getAllComplaints(){
-		return service.getAllComplaints();
+	public List<ComplaintEntity> getAllComplaints(@RequestParam String status){
+		return service.getAllComplaints(status);
+	}
+	
+	@PostMapping("update")
+	public String updateComplaint(@RequestBody ComplaintEntity complaint) {
+		return service.updateComplaint(complaint);
+	}
+	
+	@GetMapping("getAllComplaintsByEngineer")
+	public List<ComplaintEntity> getAllComplaintsByEngineer(@RequestParam String status,@RequestParam String id){
+		return service.getAllComplaintsByEngineer(status,id);
 	}
 }
