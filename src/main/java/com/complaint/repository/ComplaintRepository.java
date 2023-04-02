@@ -10,7 +10,7 @@ import com.complaint.entity.ComplaintEntity;
 @Repository
 public interface ComplaintRepository extends JpaRepository<ComplaintEntity, Integer>{
 
-	public List<ComplaintEntity> findByCid(String cid);
+	public List<ComplaintEntity> findByCidAndStatus(String cid,String status);
 	
 	public List<ComplaintEntity> findByStatus(String status);
 	

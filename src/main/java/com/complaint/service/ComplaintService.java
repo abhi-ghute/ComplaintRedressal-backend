@@ -27,9 +27,9 @@ public class ComplaintService {
 		return "success";
 	}
 	
-	public List<ComplaintEntity> getcomplaints(String cid) {
+	public List<ComplaintEntity> getcomplaints(String status,String cid) {
 
-		List<ComplaintEntity> entityList = complaintRepo.findByCid(cid);
+		List<ComplaintEntity> entityList = complaintRepo.findByCidAndStatus(cid,status);
 		
 		return entityList;
 	}

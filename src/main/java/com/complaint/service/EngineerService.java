@@ -17,22 +17,25 @@ public class EngineerService {
 
 	@Autowired
 	EngineerRepo repo;
-	
+
 	public String createEngineer(Engineer engineer) {
-		
+
 		EngineerEntity entity = new EngineerEntity();
 		BeanUtils.copyProperties(engineer, entity);
 		repo.save(entity);
 		return "success";
-		
+
 	}
-	
-	public List<EngineerEntity> getByPincode(String pinCode){
+
+	public List<EngineerEntity> getByPincode(String pinCode) {
 		List<EngineerEntity> entityList = repo.findAll();
-		
-		entityList = entityList.stream()
-        .filter(entity -> Arrays.asList(entity.getPincodes()).contains(pinCode))
-        .collect(Collectors.toList());
+
+		entityList = entityList.stream().filter(entity -> Arrays.asList(entity.getPincodes()).contains(pinCode))
+				.collect(Collectors.toList());
 		return entityList;
+	}
+
+	public List<EngineerEntity> getAll() {
+		return repo.findAll();
 	}
 }

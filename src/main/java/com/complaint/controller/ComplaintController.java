@@ -29,8 +29,8 @@ public class ComplaintController {
 	}
 	
 	@GetMapping("list")
-	public List<ComplaintEntity> getComplaints(@RequestParam String cid) {
-		return service.getcomplaints(cid);
+	public List<ComplaintEntity> getComplaints(@RequestParam String status ,@RequestParam String cid) {
+		return service.getcomplaints(status,cid);
 	}
 	
 	@GetMapping("getComplaintById")

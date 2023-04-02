@@ -32,4 +32,9 @@ public class EngineerController {
 	public List<EngineerEntity> getByPincode(@RequestParam String pinCode){
 		return service.getByPincode(pinCode);
 	}
+	
+	@GetMapping("getAll")
+	public List<EngineerEntity> getAll(){
+		return service.getAll();
+	}
 }

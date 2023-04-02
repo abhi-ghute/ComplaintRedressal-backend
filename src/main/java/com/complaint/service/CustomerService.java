@@ -1,6 +1,8 @@
 package com.complaint.service;
 
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,5 +24,9 @@ public class CustomerService {
 		
 		customerRepo.save(entity);
 		return "success";
+	}
+	
+	public List<CustomerEntity> getAllCustomers(){
+		return customerRepo.findAll();
 	}
 }

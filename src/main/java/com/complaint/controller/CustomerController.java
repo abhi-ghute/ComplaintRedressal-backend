@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.complaint.dto.Complaint;
 import com.complaint.dto.Customer;
+import com.complaint.entity.CustomerEntity;
 import com.complaint.service.CustomerService;
 
 @RestController
@@ -29,5 +30,9 @@ public class CustomerController {
 		System.out.println(customer.getPincode());
 		return service.createCustomer(customer);
 	}
-
+	
+	@GetMapping("getAll")
+	public List<CustomerEntity> getAllCustomers(){
+		return service.getAllCustomers();
+	}
 }

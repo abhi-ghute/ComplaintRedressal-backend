@@ -1,5 +1,7 @@
 package com.complaint.service;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +23,8 @@ public class ManagerService {
 		
 		repo.save(entity);
 		return "success";
+	}
+	public List<ManagerEntity> getAll(){
+		return repo.findAll();
 	}
 }
