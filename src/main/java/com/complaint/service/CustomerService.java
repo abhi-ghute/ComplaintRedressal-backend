@@ -11,6 +11,8 @@ import com.complaint.dto.Customer;
 import com.complaint.entity.CustomerEntity;
 import com.complaint.repository.CustomerRespository;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class CustomerService {
 
@@ -28,5 +30,18 @@ public class CustomerService {
 	
 	public List<CustomerEntity> getAllCustomers(){
 		return customerRepo.findAll();
+	}
+	
+	public CustomerEntity getCustomer(Integer id) {
+		return customerRepo.findById(id).get();
+	}
+	
+	@Transactional
+	public String updateCustomer(CustomerEntity customer) {
+		CustomerEntity entity = customerRepo.findById(customer.getId()).get();
+		
+		BeanUtils.copyProperties(customer, entity);
+		
+		return "success";
 	}
 }

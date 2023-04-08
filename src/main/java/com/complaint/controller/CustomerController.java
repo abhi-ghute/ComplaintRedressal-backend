@@ -35,4 +35,13 @@ public class CustomerController {
 	public List<CustomerEntity> getAllCustomers(){
 		return service.getAllCustomers();
 	}
+	
+	@GetMapping
+	public CustomerEntity getCustomer(@RequestParam Integer id) {
+		return service.getCustomer(id);
+	}
+	
+	public String updateCustomer(@RequestBody CustomerEntity customer) {
+		return service.updateCustomer(customer);
+	}
 }
