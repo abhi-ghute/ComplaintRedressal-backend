@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,7 +42,13 @@ public class CustomerController {
 		return service.getCustomer(id);
 	}
 	
+	@PostMapping("update")
 	public String updateCustomer(@RequestBody CustomerEntity customer) {
 		return service.updateCustomer(customer);
+	}
+	
+	@DeleteMapping("delete")
+	public String deleteCustomer(@RequestParam Integer id) {
+		return service.deleteCustomer(id);
 	}
 }

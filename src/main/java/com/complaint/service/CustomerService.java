@@ -39,9 +39,15 @@ public class CustomerService {
 	@Transactional
 	public String updateCustomer(CustomerEntity customer) {
 		CustomerEntity entity = customerRepo.findById(customer.getId()).get();
-		
 		BeanUtils.copyProperties(customer, entity);
 		
 		return "success";
 	}
+	
+	public String deleteCustomer(Integer id) {
+		customerRepo.deleteById(id);
+		return "Success";
+	}
+	
+	
 }

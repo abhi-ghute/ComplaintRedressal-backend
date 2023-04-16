@@ -12,6 +12,8 @@ import com.complaint.dto.Engineer;
 import com.complaint.entity.EngineerEntity;
 import com.complaint.repository.EngineerRepo;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class EngineerService {
 
@@ -37,5 +39,19 @@ public class EngineerService {
 
 	public List<EngineerEntity> getAll() {
 		return repo.findAll();
+	}
+
+	@Transactional
+	public String updateEngineer(EngineerEntity engineer) {
+		System.out.println(engineer.getName());
+		EngineerEntity entity = repo.findById(engineer.getId()).get();
+		BeanUtils.copyProperties(engineer, entity);
+
+		return "Success";
+	}
+
+	public String deleteEngineer(Integer id) {
+		repo.deleteById(id);
+		return "Success";
 	}
 }
